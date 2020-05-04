@@ -1,0 +1,7 @@
+name=input('what\'s your name?')
+name1=name.lower()
+name2=name.upper()
+name3=name.title()
+print(name1)
+print(name2)
+print(name3)

@@ -21,7 +21,12 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, ship, aliens, bu
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left =True
+    elif event.key == pygame.K_UP:
+        ship.moving_up = True
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = True
     elif event.key == pygame.K_SPACE:
+        
         fire_bullet(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
         filename = 'vscode_Pythoncode/Python from start to practice/Chapters/Chapter12_Aliens/high_score.json'
@@ -45,6 +50,10 @@ def check_keyup_events(event, ship):
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+    elif event.key == pygame.K_UP:
+        ship.moving_up = False
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = False
 
 
 def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y):
@@ -108,7 +117,7 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
     #检查是否有子弹击中了外星人
     #如果是这样，就删除相应的子弹和外星人
     #此处两个参数True告诉pygame删除发生碰撞的子弹和外星人。若想模拟高能子弹————消灭它击中的每一个外星人，则第一个bool设置为False，第二个设置为True
-    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)  
+    collisions = pygame.sprite.groupcollide(bullets, aliens, False, True)  
     if collisions:
         for aliens in collisions.values():
             stats.score += ai_settings.alien_points * len(aliens)
@@ -201,18 +210,18 @@ def change_fleet_direction(ai_settings, aliens):
 def ship_hit(ai_settings, stats, sb, screen, ship, aliens, bullets):
     '''响应被外星人撞到的飞船'''
     if stats.ships_left > 0:
+        
         #将ships_left减1
         stats.ships_left -= 1
         #更新记分牌
         sb.prep_ships()
-        #清空外星人列表和子弹列表
-        aliens.empty()
-        bullets.empty()
-
+        
         #创建一群新的外星人， 并将飞船放到屏幕中央
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
-
+        #清空外星人列表和子弹列表
+        bullets.empty()
+        aliens.empty()
         #暂停
         sleep(0.5)
     else:

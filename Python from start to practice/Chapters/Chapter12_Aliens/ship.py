@@ -1,4 +1,5 @@
 import pygame
+import os
 from pygame.sprite import Sprite
 class Ship(Sprite):
     '''
@@ -12,7 +13,8 @@ class Ship(Sprite):
         self.screen = screen
         self.ai_settings = ai_settings
         #加载飞船图像并获取其初始位置
-        self.image = pygame.image.load('vscode_Pythoncode/Python from start to practice/Chapter/Chapter12_Aliens/image/ship.bmp')
+        
+        self.image = pygame.image.load('vscode_Pythoncode/Python from start to practice/Chapters/Chapter12_Aliens/image/ship.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         

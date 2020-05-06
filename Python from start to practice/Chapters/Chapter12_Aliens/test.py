@@ -288,7 +288,9 @@ def ship_run_game():
         update_bullets(bullets, screen)
         ship_update_screen(screen, ship, bullets)
 
-ship_run_game()
+import os 
+
+print(os.path.abspath('.'))
 
 
 

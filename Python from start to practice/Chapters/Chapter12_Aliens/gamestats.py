@@ -8,7 +8,7 @@ class Gamestats():
         #游戏刚启动时处于活动状态
         self.game_active = False
         #在任何情况下，都不应重置最高得分
-        filename = 'vscode_Pythoncode/Python from start to practice/Chapter/Chapter12_Aliens/high_score.json'
+        filename = 'vscode_Pythoncode/Python from start to practice/Chapters/Chapter12_Aliens/high_score.json'
         try:   
             with open (filename,'r')as f:
                 self.high_score = json.load(f)

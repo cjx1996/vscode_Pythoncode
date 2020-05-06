@@ -24,7 +24,7 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, ship, aliens, bu
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
-        filename = 'vscode_Pythoncode/Python from start to practice/Chapter/Chapter12_Aliens/high_score.json'
+        filename = 'vscode_Pythoncode/Python from start to practice/Chapters/Chapter12_Aliens/high_score.json'
         with open (filename,'w')as f:
             json.dump(stats.high_score,f)
         sys.exit()
